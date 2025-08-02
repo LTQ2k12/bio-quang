@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bio của Quang</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+    }
+    video.bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .content {
+      text-align: center;
+      padding-top: 30vh;
+      background: rgba(0, 0, 0, 0.4);
+      width: 100%;
+    }
+    h1 { font-size: 3rem; }
+    p { font-size: 1.5rem; margin: 10px; }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Video nền -->
+  <video class="bg" autoplay muted loop playsinline>
+    <source src="https://cdn.pixabay.com/video/2023/08/16/181423-857897964_large.mp4" type="video/mp4">
+  </video>
+
+  <!-- Nội dung chính -->
+  <div class="content">
+    <h1>Quang</h1>
+    <p>Lớp 8 | Dev tương lai | Đam mê code 😎</p>
+    <p><a href="https://facebook.com">Facebook</a> | <a href="https://github.com">GitHub</a></p>
+  </div>
+</body>
+</html>
