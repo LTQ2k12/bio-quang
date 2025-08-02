@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LTQ | Dev Python</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
-      color: white;
+    }
+    body, html {
+      height: 100%;
       overflow: hidden;
     }
-    video {
+    video#bg-video {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
       z-index: -1;
+      object-fit: cover;
     }
-    .content {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
+    .container {
+      color: white;
       text-align: center;
-      background: rgba(0,0,0,0.5);
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.4);
       padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
     }
     .avatar {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       border: 3px solid white;
-      margin-bottom: 15px;
+      object-fit: cover;
+      margin-bottom: 20px;
     }
     a {
-      color: #00ffff;
+      color: #00acee;
       text-decoration: none;
       display: block;
-      margin-top: 10px;
+      margin: 10px 0;
     }
-    .now-playing {
+    .note {
       margin-top: 20px;
       font-style: italic;
-      display: none;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
 
-  <video id="bgvid" autoplay muted loop playsinline>
-    <source src="video.mp4" type="video/mp4">
-    Trình duyệt bạn không hỗ trợ video nền.
+  <!-- Video nền (muted autoplay) -->
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="video.mp4" type="video/mp4" />
+    Trình duyệt của bạn không hỗ trợ video nền.
   </video>
 
-  <div class="content" onclick="enableAudio()">
-    <img src="avatar.jpg" alt="Avatar" class="avatar">
-    <h1>LTQ | Dev Python ~</h1>
+  <div class="container" onclick="unmuteAudio()">
+    <img src="avatar.jpg" alt="Avatar" class="avatar" />
+    <h2>LTQ | Dev Python ~</h2>
+    
     <a href="https://www.facebook.com/quanglonto" target="_blank">🌐 Facebook</a>
     <a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺 YouTube</a>
-    <div>💬 Discord: 1363444260271161395</div>
-    <div class="now-playing" id="playing">🎵 Đang phát...</div>
+    <p>💬 Discord: 1363444260271161395</p>
+    <p class="note">🎵 Chạm vào để bật nhạc nền</p>
   </div>
 
   <script>
-    const vid = document.getElementById("bgvid");
-    const playingText = document.getElementById("playing");
+    const video = document.getElementById("bg-video");
 
-    function enableAudio() {
-      if (vid.muted) {
-        vid.muted = false;
-        playingText.style.display = "block";
-      }
+    function unmuteAudio() {
+      video.muted = false;
+      video.play();
     }
   </script>
+
 </body>
 </html>
