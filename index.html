@@ -1,83 +1,100 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>LTQ - Bio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Segoe UI', sans-serif;
-        }
-        video.bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            object-fit: cover;
-        }
-        .container {
-            position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 1px 1px 5px black;
-            padding: 20px;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid white;
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.5);
-        }
-        h1 {
-            margin: 10px 0;
-            font-size: 32px;
-        }
-        .links a {
-            display: block;
-            margin: 10px;
-            color: #00ffff;
-            text-decoration: none;
-            font-weight: bold;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        .links a:hover {
-            background: rgba(255,255,255,0.3);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LTQ | Bio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      background: #000;
+      overflow: hidden;
+    }
+    video.bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.6);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .links {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .links a {
+      background: rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .links a:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
 </head>
 <body>
 
-<!-- ✅ Thay thế đường dẫn video và avatar ở đây -->
-<video class="bg-video" autoplay muted loop playsinline>
-    <source src="video.mp4" type="video/mp4">
-</video>
+  <video class="bg" autoplay muted playsinline loop id="bgvid">
+    <source src="public/video.mp4" type="video/mp4">
+  </video>
 
-<div class="container">
-    <img src="avatar.jpg" alt="Avatar" class="avatar">
-    <h1>LTQ - Quang</h1>
+  <div class="overlay">
+    <img src="public/avatar.jpg" alt="Avatar" class="avatar">
+    <h1>LTQ | Dev Python</h1>
     <div class="links">
-        <a href="https://www.facebook.com/quanglonto" target="_blank">📘 Facebook</a>
-        <a href="https://www.youtube.com/@LTQ-tool" target="_blank">▶️ YouTube</a>
-        <a href="#" onclick="navigator.clipboard.writeText('1363444260271161395'); alert('Đã sao chép ID Discord: 1363444260271161395')">💬 Discord ID: Copy</a>
+      <a href="https://www.facebook.com/quanglonto" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#" onclick="navigator.clipboard.writeText('1363444260271161395'); alert('Đã copy Discord ID!')"><i class="fab fa-discord"></i> Discord ID</a>
+      <a href="https://www.youtube.com/@LTQ-tool" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
     </div>
-</div>
+  </div>
+
+  <script>
+    // Tự bật tiếng nếu được phép
+    window.addEventListener('click', () => {
+      const vid = document.getElementById('bgvid');
+      vid.muted = false;
+      vid.play();
+    });
+  </script>
 
 </body>
 </html>
