@@ -1,50 +1,83 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Bio của Quang</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      height: 100vh;
-      background: black;
-      overflow: hidden;
-    }
-    video.bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .content {
-      text-align: center;
-      padding-top: 30vh;
-      background: rgba(0, 0, 0, 0.4);
-      width: 100%;
-    }
-    h1 { font-size: 3rem; }
-    p { font-size: 1.5rem; margin: 10px; }
-    a {
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>LTQ - Bio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        video.bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 1px 1px 5px black;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 32px;
+        }
+        .links a {
+            display: block;
+            margin: 10px;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
 </head>
 <body>
-  <!-- Video nền -->
-  <video class="bg" autoplay muted loop playsinline>
-    <source src="https://cdn.pixabay.com/video/2023/08/16/181423-857897964_large.mp4" type="video/mp4">
-  </video>
 
-  <!-- Nội dung chính -->
-  <div class="content">
-    <h1>Quang</h1>
-    <p>Lớp 8 | Dev tương lai | Đam mê code 😎</p>
-    <p><a href="https://facebook.com">Facebook</a> | <a href="https://github.com">GitHub</a></p>
-  </div>
+<!-- ✅ Thay thế đường dẫn video và avatar ở đây -->
+<video class="bg-video" autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="container">
+    <img src="avatar.jpg" alt="Avatar" class="avatar">
+    <h1>LTQ - Quang</h1>
+    <div class="links">
+        <a href="https://www.facebook.com/quanglonto" target="_blank">📘 Facebook</a>
+        <a href="https://www.youtube.com/@LTQ-tool" target="_blank">▶️ YouTube</a>
+        <a href="#" onclick="navigator.clipboard.writeText('1363444260271161395'); alert('Đã sao chép ID Discord: 1363444260271161395')">💬 Discord ID: Copy</a>
+    </div>
+</div>
+
 </body>
 </html>
