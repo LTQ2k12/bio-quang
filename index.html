@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LTQ | Bio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <title>Địt Mẹ Mày</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
-    html, body {
+    body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: black;
       overflow: hidden;
-      color: #fff;
     }
-
-    video.bg {
+    #background-video {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
@@ -27,88 +22,77 @@
       object-fit: cover;
       z-index: -1;
     }
-
-    .container {
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      backdrop-filter: blur(4px);
-      background-color: rgba(0, 0, 0, 0.5);
+    .content {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      padding: 20px;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 20px;
     }
-
     .avatar {
-      width: 160px;
-      height: 160px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
+      border: 4px solid white;
       object-fit: cover;
-      border: 3px solid #fff;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 30px;
       margin-bottom: 20px;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .links a {
+    a.button {
+      display: block;
+      background: #00ADB5;
+      color: white;
       text-decoration: none;
-      color: #fff;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-radius: 10px;
-      transition: all 0.3s ease;
+      margin: 10px auto;
+      width: 220px;
+      transition: 0.2s;
     }
-
-    .links a:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+    a.button:hover {
+      background: #00858a;
     }
-
-    .music {
+    .note {
+      font-size: 14px;
       margin-top: 20px;
-      font-style: italic;
-      opacity: 0.8;
+      opacity: 0.6;
     }
   </style>
 </head>
 <body>
 
   <!-- Video nền -->
-  <video class="bg" autoplay loop muted playsinline>
+  <video autoplay muted loop id="background-video">
     <source src="video.mp4" type="video/mp4">
-    Trình duyệt không hỗ trợ video.
   </video>
 
-  <div class="container">
-    <img src="avatar.jpg" alt="Avatar" class="avatar" />
-    <h1>LTQ | Dev Python ~</h1>
-
-    <div class="links">
-      <a href="https://www.facebook.com/quanglonto" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="https://www.youtube.com/@LTQ-tool" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-      <div><i class="fab fa-discord"></i> Discord: <b>1363444260271161395</b></div>
-    </div>
-
-    <div class="music">🎵 Đang phát...</div>
+  <!-- Nội dung chính -->
+  <div class="content">
+    <img src="avatar.jpg" alt="Avatar" class="avatar">
+    <h1>Bio của Quang</h1>
+    <a class="button" href="https://facebook.com" target="_blank">🌐 Facebook</a>
+    <a class="button" href="https://youtube.com" target="_blank">▶️ YouTube</a>
+    <a class="button" href="https://discord.gg/" target="_blank">💬 Discord</a>
+    <p class="note">👉 Nhấn vào màn hình để bật tiếng video</p>
   </div>
 
-  <!-- Gỡ 'muted' để có nhạc tự động phát -->
   <script>
-    const video = document.querySelector("video");
-    video.muted = false;
-    video.play().catch(() => {
-      console.warn("Trình duyệt chặn autoplay có tiếng.");
-    });
+    const video = document.getElementById("background-video");
+
+    // Khi người dùng nhấp vào bất kỳ đâu lần đầu → bật tiếng
+    document.body.addEventListener("click", () => {
+      if (video.muted) {
+        video.muted = false;
+        video.play();
+      }
+    }, { once: true });
   </script>
+
 </body>
 </html>
