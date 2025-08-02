@@ -3,105 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LTQ - Bio</title>
+  <title>LTQ | Bio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #000;
-      color: #fff;
-      overflow: hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    video#bg {
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    video.bg {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: -1;
     }
+
     .container {
+      height: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
+      align-items: center;
+      flex-direction: column;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.5);
       text-align: center;
-      backdrop-filter: blur(8px);
+      padding: 20px;
     }
+
     .avatar {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid white;
+      border: 3px solid #fff;
       margin-bottom: 20px;
     }
-    h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    .links a {
-      display: block;
-      margin: 10px 0;
-      color: #00f7ff;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: 0.3s;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    .links a:hover {
-      color: #00ffaa;
-      transform: scale(1.05);
-    }
-    #playBtn {
-      background: #00f7ff;
-      border: none;
-      color: #000;
-      padding: 10px 20px;
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       margin-top: 20px;
-      font-size: 1rem;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
       border-radius: 10px;
-      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .music {
+      margin-top: 20px;
+      font-style: italic;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 
   <!-- Video nền -->
-  <video id="bg" autoplay muted loop>
-    <source src="video.mp4" type="video/mp4" />
+  <video class="bg" autoplay loop muted playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Trình duyệt không hỗ trợ video.
   </video>
 
-  <!-- Giao diện -->
   <div class="container">
-    <img src="avt.jpg" alt="Avatar" class="avatar" />
+    <img src="avatar.jpg" alt="Avatar" class="avatar" />
     <h1>LTQ | Dev Python ~</h1>
-    
+
     <div class="links">
-      <a href="https://www.facebook.com/quanglonto" target="_blank">🌐 Facebook</a>
-      <a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺 YouTube</a>
-      <a href="#" onclick="copyDiscord()">💬 Discord: 1363444260271161395</a>
+      <a href="https://www.facebook.com/quanglonto" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://www.youtube.com/@LTQ-tool" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+      <div><i class="fab fa-discord"></i> Discord: <b>1363444260271161395</b></div>
     </div>
 
-    <button id="playBtn">🔊 Phát nhạc</button>
+    <div class="music">🎵 Đang phát...</div>
   </div>
 
-  <!-- Nhạc nền -->
-  <audio id="bgm" src="video.mp4"></audio>
-
+  <!-- Gỡ 'muted' để có nhạc tự động phát -->
   <script>
-    const playBtn = document.getElementById("playBtn");
-    const audio = document.getElementById("bgm");
-    playBtn.addEventListener("click", () => {
-      audio.play();
-      audio.volume = 1;
-      playBtn.innerText = "🎵 Đang phát...";
-      playBtn.disabled = true;
+    const video = document.querySelector("video");
+    video.muted = false;
+    video.play().catch(() => {
+      console.warn("Trình duyệt chặn autoplay có tiếng.");
     });
-
-    function copyDiscord() {
-      navigator.clipboard.writeText("1363444260271161395");
-      alert("Đã copy ID Discord");
-    }
   </script>
-
 </body>
 </html>
