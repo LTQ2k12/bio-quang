@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Địt Mẹ mày, Đây Bio T DDOS CL</title>
+  <title>Bio LTQ DZ</title>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', sans-serif;
       color: white;
@@ -107,30 +104,16 @@
       font-size: 26px;
       margin-bottom: 20px;
     }
-    .intro-screen button {
-      padding: 10px 20px;
-      background: #00ffff;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .intro-screen button:hover {
-      background: #00cccc;
-    }
   </style>
 </head>
 <body oncontextmenu="return false">
 
-  <video id="bg-video" src="video.mp4" preload="auto" muted></video>
+  <video id="bg-video" src="video.mp4" preload="auto" muted loop></video>
 
-  <!-- MÀN INTRO -->
+  <!-- MÀN INTRO CÓ HCAPTCHA -->
   <div class="intro-screen" id="intro">
     <h2>LTQ DZ , còn e thì k</h2>
-    <button onclick="startSite()">Bắt đầu</button>
+    <div class="h-captcha" data-sitekey="84564d18-834c-4b6a-bfc4-6e8cc53e0872" data-callback="startSite"></div>
   </div>
 
   <!-- NỘI DUNG CHÍNH -->
@@ -170,8 +153,6 @@
     });
 
     document.addEventListener("contextmenu", e => e.preventDefault());
-    video.addEventListener('ended', () => video.play());
   </script>
 </body>
 </html>
-
