@@ -1,201 +1,31 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LTQ | DZ còn em thì không</title>
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <meta charset="UTF-8">
+  <title>Trang Web Mã Hóa</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
       background: black;
       color: white;
-      overflow: hidden;
-    }
-    video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    /* =========== CAPTCHA PHẦN =========== */
-    .captcha-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #0f1117;
+      font-family: sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 999;
-    }
-
-    .captcha-box {
-      text-align: center;
-      max-width: 400px;
-      padding: 20px;
-      border-radius: 12px;
-      background-color: #1a1c23;
-      box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
-    }
-
-    .spinner {
-      border: 4px solid #333;
-      border-top: 4px solid #0ff;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-      display: none;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .captcha-status {
-      margin-top: 15px;
-      color: #0ff;
-    }
-
-    /* =========== PHẦN BIO =========== */
-    .container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      display: none;
-    }
-    .avatar-wrapper {
-      position: relative;
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 15px auto;
-    }
-    .avatar-border {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      padding: 4px;
-      background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
-      animation: spin 4s linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-    .avatar {
-      width: 122px;
-      height: 122px;
-      border-radius: 50%;
-      object-fit: cover;
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      z-index: 2;
-      border: 2px solid white;
-    }
-    h1 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .link {
-      margin: 8px 0;
-      font-size: 18px;
-    }
-    .link a {
-      color: #00ffff;
-      text-decoration: none;
-    }
-    .music {
-      margin-top: 15px;
-      font-style: italic;
-      color: #ccc;
+      height: 100vh;
     }
   </style>
 </head>
-<body oncontextmenu="return false">
-  <video id="bg-video" src="video.mp4" preload="auto" muted></video>
-
-  <!-- CAPTCHA PHẦN -->
-  <div class="captcha-wrapper" id="captchaScreen">
-    <div class="captcha-box">
-      <h2>🔒 Địt Mẹ Mày Xác Minh Đi</h2>
-      <div class="h-captcha"
-        data-sitekey="84564d18-834c-4b6a-bfc4-6e8cc53e0872"
-        data-callback="onCaptchaSuccess"
-        data-theme="dark">
-      </div>
-      <div class="spinner" id="spinner"></div>
-      <div class="captcha-status" id="captchaStatus">VÌ S PHẢI LÀM ,
-                                                      ĐỂ CHỐNG DDOS ĐẤY CON L</div>
-    </div>
-  </div>
-
-  <!-- BIO -->
-  <div class="container" id="mainContent">
-    <div class="avatar-wrapper">
-      <div class="avatar-border"></div>
-      <img src="avatar.jpg" alt="Avatar" class="avatar" />
-    </div>
-    <h1>LTQ | Dev Python ~ </h1>
-    <div class="link"><a href="https://www.facebook.com/quanglonto" target="_blank">🌐 Facebook Bố Mày</a></div>
-    <div class="link"><a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺 YouTube Bố Mày</a></div>
-    <div class="link">💬 Discord: <b>1363444260271161395</b></div>
-    <div class="music">🎵 MỖI NGÀY 1 NHẠC</div>
-  </div>
-
+<body>
+  <noscript>Vui lòng bật JavaScript để xem nội dung.</noscript>
   <script>
-    const video = document.getElementById("bg-video");
-
-    function onCaptchaSuccess(token) {
-      document.getElementById('captchaStatus').textContent = "Đang xác minh...";
-      document.getElementById('spinner').style.display = 'block';
-
-      setTimeout(() => {
-        // Ẩn captcha, hiện main
-        document.getElementById('captchaScreen').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'block';
-
-        video.muted = false;
-        video.play();
-      }, 1500);
-    }
-
-    // Chặn F12, Ctrl+Shift+I, Ctrl+U
-    document.addEventListener("keydown", function(e) {
-      if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
-        (e.ctrlKey && e.key.toLowerCase() === "u")
-      ) {
-        e.preventDefault();
-      }
-    });
-
-    document.addEventListener("contextmenu", e => e.preventDefault());
-    video.addEventListener('ended', () => video.play());
+    const encoded = `PCEtLSBIVG1MLSBWw6AgxJHhu5kgY8awxqFuZyAxOyBt4bqhaSBiw6Agc+G7pSB04bulYyAtLT4KPGh0bWwgbGFuZz0idmk
+iPgo8aGVhZD4KICA8bWV0YSBjaGFyc2V0PVwiVVRGLThcIiAvPgogIDx0aXRsZT5M
+VFEgfCBEWyBjw7RuIGVtIGNow7RuZ108L3RpdGxlPgo8L2hlYWQ+Cjxib2R5Pgo8
+aDM+VHLhu4sgdHJhbmcgd2ViIG3DoSBo4bqhdTwvaDM+CjwvYm9keT4KPC9odG1s
+Pg==`;
+    
+    document.write(atob(encoded));
   </script>
 </body>
 </html>
-
-
-
