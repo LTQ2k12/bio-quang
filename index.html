@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Trang Web Mã Hóa</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LTQ | Web mã hóa</title>
   <style>
     body {
       margin: 0;
-      background: black;
+      background-color: black;
       color: white;
       font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
   </style>
 </head>
 <body>
-  <noscript>Vui lòng bật JavaScript để xem nội dung.</noscript>
+  <div id="app">Đang tải...</div>
+
   <script>
-    const encoded = `PCEtLSBIVG1MLSBWw6AgxJHhu5kgY8awxqFuZyAxOyBt4bqhaSBiw6Agc+G7pSB04bulYyAtLT4KPGh0bWwgbGFuZz0idmk
-iPgo8aGVhZD4KICA8bWV0YSBjaGFyc2V0PVwiVVRGLThcIiAvPgogIDx0aXRsZT5M
-VFEgfCBEWyBjw7RuIGVtIGNow7RuZ108L3RpdGxlPgo8L2hlYWQ+Cjxib2R5Pgo8
-aDM+VHLhu4sgdHJhbmcgd2ViIG3DoSBo4bqhdTwvaDM+CjwvYm9keT4KPC9odG1s
-Pg==`;
-    
-    document.write(atob(encoded));
+    const encoded = `
+ICAgIDxzdHlsZT4KICAgICogewogICAgICBtYXJnaW46IDA7CiAgICAgIHBhZGRpbmc6IDA7CiAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmOwogICAgICBiYWNrZ3JvdW5kOiB1cmwoaHR0cHM6Ly9jZG4ubmlrb2NyZWQuZnVuL3YzL2ZpbGVzL2JhY2tncm91bmQuanBnKTsgICAgCiAgICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7CiAgICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjsKICAgICAgY29sb3I6IHdoaXRlOwogICAgICBoZWlnaHQ6IDEwMHZoOwogICAgfQogICAgPC9zdHlsZT4KICAgIDxjZW50ZXI+CiAgICAgIDxoMSBzdHlsZT0iY29sb3I6IGxpZ2h0Ymx1ZTsiPkxUUSB8IERaIGPDtG4gZW0gdGjDrSBraMO0bmc8L2gxPgogICAgPC9jZW50ZXI+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9qcy5oY2FwdGNoYS5jb20vMS9hcGkuanMiIGFzeW5jIGRlZmVyPjwvc2NyaXB0PgogICAgPGRpdiBjbGFzcz0iaGNhcHRjaGEiIGRhdGEtc2l0ZWtleT0iNGY4OTNiLWIyYmUtNDRkMi1hMTMwLTAyNmYyOGY3OTg2ZSI+PC9kaXY+Cg==
+    `.trim();
+
+    const decoded = atob(encoded);
+    document.getElementById("app").innerHTML = decoded;
   </script>
 </body>
 </html>
