@@ -3,170 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🔒 LTQ ~ DZ CÒN E THÌ K</title>
+  <title>LTQ | DZ còn em thì không</title>
   <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-  <style>
-    body {
-      background-color: #0f1117;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 400px;
-      padding: 20px;
-      border-radius: 12px;
-      background-color: #1a1c23;
-      box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
-    }
-
-    .shield-icon {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .checkmark, .error-icon {
-      display: none;
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .title {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .subtitle {
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    .captcha-container {
-      margin-top: 20px;
-    }
-
-    .loading {
-      display: none;
-      margin-top: 20px;
-    }
-
-    .spinner {
-      border: 4px solid #333;
-      border-top: 4px solid #0ff;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .status {
-      margin-top: 15px;
-      color: #0ff;
-    }
-
-    .security-info {
-      margin-top: 25px;
-      font-size: 13px;
-      color: #999;
-    }
-
-    .error-message {
-      display: none;
-      background-color: #330000;
-      color: #ff4c4c;
-      padding: 10px;
-      border-radius: 6px;
-      margin-top: 15px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="shield-icon" id="mainIcon">🛡️</div>
-    <div class="checkmark" id="checkmark">✅</div>
-    <div class="error-icon" id="errorIcon">❌</div>
-    <h1 class="title" id="title">Vui lòng chờ khi chúng tôi đang kiểm tra bạn...</h1>
-    <p class="subtitle" id="subtitle">Đây là một quy trình bảo mật tự động</p>
-
-    <div class="error-message" id="errorMessage">
-      <strong>⚠️ Xác minh thất bại!</strong>
-      <br>
-      <span id="errorText">Vui lòng thử lại.</span>
-    </div>
-
-    <div class="captcha-container" id="captchaContainer">
-      <div class="h-captcha"
-        data-sitekey="84564d18-834c-4b6a-bfc4-6e8cc53e0872"
-        data-callback="onCaptchaSuccess"
-        data-error-callback="onCaptchaError"
-        data-expired-callback="onCaptchaExpired"
-        data-theme="dark">
-      </div>
-    </div>
-
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      <p style="margin-top: 1rem;">Đang xác minh...</p>
-    </div>
-
-    <div class="status" id="status">Vui lòng hoàn thành captcha để tiếp tục</div>
-
-    <div class="security-info">
-      <strong>🔒 Tại sao cần kiểm tra?</strong>
-      <br>Chúng tôi cần xác minh rằng bạn là con người thật để bảo vệ website khỏi bot và spam.<br>
-      Chỉ cần giải captcha một lần và bạn có thể tiếp tục duyệt bình thường.
-    </div>
-  </div>
-
-  <script>
-    function onCaptchaSuccess(token) {
-      document.getElementById('captchaContainer').style.display = 'none';
-      document.getElementById('loading').style.display = 'block';
-      document.getElementById('status').textContent = "Đang xử lý...";
-
-      setTimeout(() => {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('checkmark').style.display = 'block';
-        document.getElementById('title').textContent = "✅ Xác minh thành công!";
-        document.getElementById('subtitle').textContent = "Bạn là con người! Xin mời tiếp tục.";
-        document.getElementById('status').style.color = "#0f0";
-        document.getElementById('status').textContent = "Truy cập được cấp quyền.";
-      }, 1500);
-    }
-
-    function onCaptchaError() {
-      document.getElementById('errorMessage').style.display = 'block';
-      document.getElementById('errorText').textContent = "Đã xảy ra lỗi khi xác minh.";
-      document.getElementById('status').textContent = "Vui lòng thử lại.";
-      document.getElementById('status').style.color = "#f33";
-    }
-
-    function onCaptchaExpired() {
-      document.getElementById('status').textContent = "Captcha đã hết hạn. Vui lòng thử lại.";
-      document.getElementById('status').style.color = "#f33";
-    }
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Địt Mẹ mày, Đây Bio T DDOS CL</title>
   <style>
     * {
       margin: 0;
@@ -175,8 +13,8 @@
     }
     body {
       font-family: 'Segoe UI', sans-serif;
-      color: white;
       background: black;
+      color: white;
       overflow: hidden;
     }
     video {
@@ -188,6 +26,51 @@
       height: 100%;
       z-index: -1;
     }
+
+    /* =========== CAPTCHA PHẦN =========== */
+    .captcha-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0f1117;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .captcha-box {
+      text-align: center;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #1a1c23;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
+    }
+
+    .spinner {
+      border: 4px solid #333;
+      border-top: 4px solid #0ff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .captcha-status {
+      margin-top: 15px;
+      color: #0ff;
+    }
+
+    /* =========== PHẦN BIO =========== */
     .container {
       position: absolute;
       top: 50%;
@@ -229,10 +112,6 @@
       z-index: 2;
       border: 2px solid white;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
     h1 {
       font-size: 28px;
       font-weight: bold;
@@ -251,53 +130,27 @@
       font-style: italic;
       color: #ccc;
     }
-
-    /* MÀN CHE INTRO */
-    .intro-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      flex-direction: column;
-    }
-    .intro-screen h2 {
-      font-size: 26px;
-      margin-bottom: 20px;
-    }
-    .intro-screen button {
-      padding: 10px 20px;
-      background: #00ffff;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .intro-screen button:hover {
-      background: #00cccc;
-    }
   </style>
 </head>
 <body oncontextmenu="return false">
-
   <video id="bg-video" src="video.mp4" preload="auto" muted></video>
 
-  <!-- MÀN INTRO -->
-  <div class="intro-screen" id="intro">
-    <h2>LTQ DZ , còn e thì k</h2>
-    <button onclick="startSite()">Bắt đầu</button>
+  <!-- CAPTCHA PHẦN -->
+  <div class="captcha-wrapper" id="captchaScreen">
+    <div class="captcha-box">
+      <h2>🔒 Xác minh trước khi vào</h2>
+      <div class="h-captcha"
+        data-sitekey="84564d18-834c-4b6a-bfc4-6e8cc53e0872"
+        data-callback="onCaptchaSuccess"
+        data-theme="dark">
+      </div>
+      <div class="spinner" id="spinner"></div>
+      <div class="captcha-status" id="captchaStatus">Hãy hoàn thành captcha để vào web</div>
+    </div>
   </div>
 
-  <!-- NỘI DUNG CHÍNH -->
-  <div class="container" id="main">
+  <!-- BIO -->
+  <div class="container" id="mainContent">
     <div class="avatar-wrapper">
       <div class="avatar-border"></div>
       <img src="avatar.jpg" alt="Avatar" class="avatar" />
@@ -311,14 +164,19 @@
 
   <script>
     const video = document.getElementById("bg-video");
-    const intro = document.getElementById("intro");
-    const main = document.getElementById("main");
 
-    function startSite() {
-      intro.style.display = "none";
-      main.style.display = "block";
-      video.muted = false;
-      video.play();
+    function onCaptchaSuccess(token) {
+      document.getElementById('captchaStatus').textContent = "Đang xác minh...";
+      document.getElementById('spinner').style.display = 'block';
+
+      setTimeout(() => {
+        // Ẩn captcha, hiện main
+        document.getElementById('captchaScreen').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+
+        video.muted = false;
+        video.play();
+      }, 1500);
     }
 
     // Chặn F12, Ctrl+Shift+I, Ctrl+U
@@ -337,7 +195,3 @@
   </script>
 </body>
 </html>
-
-
-
-
