@@ -1,207 +1,177 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đang xác minh...</title>
-    
-    <!-- hCaptcha Script -->
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Địt Mẹ mày, Đây Bio T DDOS CL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: black;
+      overflow: hidden;
+    }
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      display: none;
+    }
+    .avatar-wrapper {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 15px auto;
+    }
+    .avatar-border {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      padding: 4px;
+      background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
+      animation: spin 4s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .avatar {
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      z-index: 2;
+      border: 2px solid white;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .link {
+      margin: 8px 0;
+      font-size: 18px;
+    }
+    .link a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    .music {
+      margin-top: 15px;
+      font-style: italic;
+      color: #ccc;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .container {
-            text-align: center;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 90%;
-        }
-
-        .shield-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        .captcha-container {
-            margin: 2rem 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .status {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 1rem;
-        }
-
-        .dots {
-            display: inline-block;
-        }
-
-        .dots::after {
-            content: '';
-            animation: dots 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        @keyframes dots {
-            0%, 20% { content: ''; }
-            40% { content: '.'; }
-            60% { content: '..'; }
-            80%, 100% { content: '...'; }
-        }
-
-        .security-info {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-
-        .checkmark {
-            display: none;
-            font-size: 3rem;
-            color: #4CAF50;
-            margin-bottom: 1rem;
-            animation: checkmark 0.5s ease-in-out;
-        }
-
-        @keyframes checkmark {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .error-icon {
-            display: none;
-            font-size: 3rem;
-            color: #f44336;
-            margin-bottom: 1rem;
-        }
-
-        .loading {
-            display: none;
-            margin: 1rem 0;
-        }
-
-        .spinner {
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top: 3px solid white;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .h-captcha {
-            margin: 0 auto;
-        }
-
-        .error-message {
-            background: rgba(244, 67, 54, 0.2);
-            border: 1px solid rgba(244, 67, 54, 0.5);
-            color: #ffcdd2;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            display: none;
-        }
-    </style>
+    /* MÀN CHE INTRO */
+    .intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      flex-direction: column;
+    }
+    .intro-screen h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    .intro-screen button {
+      padding: 10px 20px;
+      background: #00ffff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .intro-screen button:hover {
+      background: #00cccc;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <div class="shield-icon" id="mainIcon">🛡️</div>
-        <div class="checkmark" id="checkmark">✅</div>
-        <div class="error-icon" id="errorIcon">❌</div>
-        
-        <h1 class="title" id="title">Vui lòng chờ khi chúng tôi đang kiểm tra bạn...</h1>
-        <p class="subtitle" id="subtitle">Đây là một quy trình bảo mật tự động</p>
-        
-        <div class="error-message" id="errorMessage">
-            <strong>⚠️ Xác minh thất bại!</strong><br>
-            <span id="errorText">Vui lòng thử lại.</span>
-        </div>
-        
-        <div class="captcha-container" id="captchaContainer">
-            <div class="h-captcha" 
-                 data-sitekey="3640844c-e606-4b7e-93ec-078232d4047a"
-                 data-callback="onCaptchaSuccess"
-                 data-error-callback="onCaptchaError"
-                 data-expired-callback="onCaptchaExpired"
-                 data-theme="dark">
-            </div>
-        </div>
-        
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p style="margin-top: 1rem;">Đang xác minh...</p>
-        </div>
-        
-        <div class="status" id="status">Vui lòng hoàn thành captcha để tiếp tục</div>
-        
-        <div class="security-info">
-            <strong>🔒 Tại sao cần kiểm tra?</strong><br>
-                    Chống DDOS nha đcm ddos cl
-        </div>
+<body oncontextmenu="return false">
+
+  <video id="bg-video" src="video.mp4" preload="auto" muted></video>
+
+  <!-- MÀN INTRO -->
+  <div class="intro-screen" id="intro">
+    <h2>LTQ DZ , còn e thì k</h2>
+    <button onclick="startSite()">Bắt đầu</button>
+  </div>
+
+  <!-- NỘI DUNG CHÍNH -->
+  <div class="container" id="main">
+    <div class="avatar-wrapper">
+      <div class="avatar-border"></div>
+      <img src="avatar.jpg" alt="Avatar" class="avatar" />
     </div>
+    <h1>LTQ | Dev Python ~ </h1>
+    <div class="link"><a href="https://www.facebook.com/quanglonto" target="_blank">🌐 Facebook</a></div>
+    <div class="link"><a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺 YouTube</a></div>
+    <div class="link">💬 Discord: <b>1363444260271161395</b></div>
+    <div class="music">🎵 Nhấn vô đây để mở nhạc</div>
+  </div>
 
-    <noscript>
-        <meta http-equiv="refresh" content="0;url=blocked.html?reason=bot">
-    </noscript>
+  <script>
+    const video = document.getElementById("bg-video");
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("main");
 
-    <script>
-        function _0x8504(_0x473f43,_0x428470){const _0xffefd5=_0xffef();return _0x8504=function(_0x8504dc,_0x1dc437){_0x8504dc=_0x8504dc-0x146;let _0x5aadc3=_0xffefd5[_0x8504dc];return _0x5aadc3;},_0x8504(_0x473f43,_0x428470);}(function(_0x48318d,_0x1c6f5b){const _0x4d602f=_0x8504,_0x389b87=_0x48318d();while(!![]){try{const _0x1a458b=-parseInt(_0x4d602f(0x178))/0x1+parseInt(_0x4d602f(0x1b6))/0x2*(-parseInt(_0x4d602f(0x1a0))/0x3)+parseInt(_0x4d602f(0x1a7))/0x4*(-parseInt(_0x4d602f(0x17b))/0x5)+-parseInt(_0x4d602f(0x17e))/0x6+-parseInt(_0x4d602f(0x18b))/0x7+parseInt(_0x4d602f(0x199))/0x8+parseInt(_0x4d602f(0x186))/0x9*(parseInt(_0x4d602f(0x156))/0xa);if(_0x1a458b===_0x1c6f5b)break;else _0x389b87['push'](_0x389b87['shift']());}catch(_0x274b2f){_0x389b87['push'](_0x389b87['shift']());}}}(_0xffef,0xb5524),(function(){'use strict';const _0x27927f=_0x8504;const _0x570831={'SITE_KEY':_0x27927f(0x1aa),'MAX_ATTEMPTS':0x3};let _0x36e89c={'attempts':0x0,'token':null,'verified':![],'redirecting':![]};const _0x1a3d32=new URLSearchParams(window[_0x27927f(0x190)][_0x27927f(0x14a)]),_0x4a0bbf=_0x1a3d32[_0x27927f(0x168)](_0x27927f(0x15b))||document[_0x27927f(0x19a)]||'/',_0x20ba23=_0x1a3d32['get'](_0x27927f(0x1a8))||_0x27927f(0x17d);console['log'](_0x27927f(0x1a9)),console[_0x27927f(0x181)](_0x27927f(0x18f),_0x20ba23),console[_0x27927f(0x181)](_0x27927f(0x15e),_0x4a0bbf),window['onCaptchaSuccess']=function(_0x1e13a9){const _0x5688c0=_0x27927f;console['log'](_0x5688c0(0x16f)),console[_0x5688c0(0x181)](_0x5688c0(0x18e),_0x1e13a9[_0x5688c0(0x1a3)](0x0,0x14)+_0x5688c0(0x1b5)),_0x36e89c['token']=_0x1e13a9,_0x36e89c[_0x5688c0(0x172)]=!![],document[_0x5688c0(0x16d)](_0x5688c0(0x161))[_0x5688c0(0x19f)][_0x5688c0(0x16c)](_0x5688c0(0x14b)),document[_0x5688c0(0x16d)]('loading')[_0x5688c0(0x19e)][_0x5688c0(0x147)]=_0x5688c0(0x197),document[_0x5688c0(0x16d)](_0x5688c0(0x166))['textContent']=_0x5688c0(0x1a1),document[_0x5688c0(0x16d)]('errorMessage')[_0x5688c0(0x19e)][_0x5688c0(0x147)]=_0x5688c0(0x146),_0xe14dab(_0x1e13a9);},window['onCaptchaError']=function(_0x3ef98a){const _0x4ff2b7=_0x27927f;console[_0x4ff2b7(0x154)](_0x4ff2b7(0x162),_0x3ef98a),_0x3a0f35('Có\x20lỗi\x20xảy\x20ra\x20với\x20captcha.\x20Vui\x20lòng\x20thử\x20lại.'),_0x36e89c[_0x4ff2b7(0x182)]++,_0x36e89c['attempts']>=_0x570831[_0x4ff2b7(0x159)]&&setTimeout(()=>{const _0x45e07b=_0x4ff2b7;_0xa3a56f(_0x45e07b(0x18a));},0x7d0);},window[_0x27927f(0x195)]=function(){const _0x503c05=_0x27927f;console[_0x503c05(0x181)](_0x503c05(0x198)),_0x3a0f35(_0x503c05(0x193)),_0x19d09b();};function _0xe14dab(_0x310967){const _0xc6f0e7=_0x27927f;console[_0xc6f0e7(0x181)](_0xc6f0e7(0x15a));if(!_0x310967||_0x310967[_0xc6f0e7(0x169)]<0x14){console[_0xc6f0e7(0x154)](_0xc6f0e7(0x160)),_0x24a146(['invalid_token']);return;}if(!_0x310967[_0xc6f0e7(0x17c)](_0xc6f0e7(0x192))&&!_0x310967[_0xc6f0e7(0x17c)](_0xc6f0e7(0x15d))){console[_0xc6f0e7(0x154)]('❌\x20Token\x20format\x20not\x20recognized'),_0x24a146([_0xc6f0e7(0x148)]);return;}const _0x1efd9f=_0x3c3888();console[_0xc6f0e7(0x181)]('🔍\x20Browser\x20checks\x20result:',_0x1efd9f);if(_0x1efd9f['score']>0x32){console[_0xc6f0e7(0x154)](_0xc6f0e7(0x1a4),_0x1efd9f[_0xc6f0e7(0x19d)]),_0x24a146([_0xc6f0e7(0x1b1)]);return;}console['log'](_0xc6f0e7(0x1a2)),_0x641621();}function _0x3c3888(){const _0x1df2b0=_0x27927f;let _0x3a7676=0x0,_0x323508=[];navigator['webdriver']&&(_0x3a7676+=0x1e,_0x323508[_0x1df2b0(0x158)]('webdriver'));(!window[_0x1df2b0(0x16a)]||!window[_0x1df2b0(0x16a)][_0x1df2b0(0x177)])&&(_0x3a7676+=0xf,_0x323508[_0x1df2b0(0x158)]('no_chrome'));(!navigator['plugins']||navigator[_0x1df2b0(0x189)][_0x1df2b0(0x169)]===0x0)&&(_0x3a7676+=0xa,_0x323508['push'](_0x1df2b0(0x153)));(!navigator[_0x1df2b0(0x1b4)]||navigator[_0x1df2b0(0x1b4)][_0x1df2b0(0x169)]===0x0)&&(_0x3a7676+=0xa,_0x323508['push'](_0x1df2b0(0x15c)));const _0x5af32c=navigator[_0x1df2b0(0x194)][_0x1df2b0(0x18d)]();return(_0x5af32c[_0x1df2b0(0x185)](_0x1df2b0(0x175))||_0x5af32c[_0x1df2b0(0x185)]('phantom')||_0x5af32c[_0x1df2b0(0x185)](_0x1df2b0(0x1ac)))&&(_0x3a7676+=0x19,_0x323508[_0x1df2b0(0x158)]('bot_ua')),typeof document[_0x1df2b0(0x1ab)]!=='function'&&(_0x3a7676+=0x14,_0x323508[_0x1df2b0(0x158)](_0x1df2b0(0x155))),console['log']('🤖\x20Browser\x20check\x20-\x20Score:',_0x3a7676,_0x1df2b0(0x196),_0x323508),{'score':_0x3a7676,'flags':_0x323508};}function _0x641621(){const _0x395c82=_0x27927f;console[_0x395c82(0x181)]('🎉\x20Verification\x20completed\x20successfully'),sessionStorage['setItem'](_0x395c82(0x152),_0x395c82(0x15f)),sessionStorage[_0x395c82(0x1b3)](_0x395c82(0x1ad),Date[_0x395c82(0x187)]()[_0x395c82(0x167)]()),document[_0x395c82(0x16d)](_0x395c82(0x164))[_0x395c82(0x19e)][_0x395c82(0x147)]=_0x395c82(0x146),document['getElementById'](_0x395c82(0x174))[_0x395c82(0x19e)][_0x395c82(0x147)]=_0x395c82(0x146),document[_0x395c82(0x16d)](_0x395c82(0x1b7))[_0x395c82(0x19e)][_0x395c82(0x147)]=_0x395c82(0x197),document[_0x395c82(0x16d)](_0x395c82(0x1b0))[_0x395c82(0x1af)]=_0x395c82(0x188),document['getElementById']('subtitle')[_0x395c82(0x1af)]='Đang\x20chuyển\x20hướng...',document[_0x395c82(0x16d)]('status')[_0x395c82(0x1af)]=_0x395c82(0x173),setTimeout(()=>{const _0x1b416a=_0x395c82;if(_0x36e89c['redirecting'])return;_0x36e89c[_0x1b416a(0x14c)]=!![];let _0x106044=_0x4a0bbf;try{const _0x15b68a=new URL(_0x4a0bbf);_0x15b68a[_0x1b416a(0x170)][_0x1b416a(0x171)](_0x1b416a(0x172)),_0x106044=_0x15b68a[_0x1b416a(0x167)]();}catch(_0x2e2502){_0x106044=_0x4a0bbf['split']('?')[0x0];}const _0x344fdd=_0x106044[_0x1b416a(0x185)]('?')?'&':'?',_0x275984=_0x106044+_0x344fdd+'verified=true';console['log'](_0x1b416a(0x18c),_0x275984),window[_0x1b416a(0x190)][_0x1b416a(0x16e)]=_0x275984;},0x7d0);}function _0x24a146(_0x33f42d){const _0x3c4bc7=_0x27927f;console['error'](_0x3c4bc7(0x183),_0x33f42d),_0x36e89c['attempts']++,document['getElementById']('loading')[_0x3c4bc7(0x19e)][_0x3c4bc7(0x147)]=_0x3c4bc7(0x146),_0x36e89c[_0x3c4bc7(0x182)]>=_0x570831[_0x3c4bc7(0x159)]?(document[_0x3c4bc7(0x16d)]('mainIcon')[_0x3c4bc7(0x19e)][_0x3c4bc7(0x147)]=_0x3c4bc7(0x146),document[_0x3c4bc7(0x16d)](_0x3c4bc7(0x14d))[_0x3c4bc7(0x19e)][_0x3c4bc7(0x147)]=_0x3c4bc7(0x197),document[_0x3c4bc7(0x16d)](_0x3c4bc7(0x1b0))[_0x3c4bc7(0x1af)]='❌\x20Xác\x20minh\x20thất\x20bại',document[_0x3c4bc7(0x16d)](_0x3c4bc7(0x151))['textContent']=_0x3c4bc7(0x165),document[_0x3c4bc7(0x16d)]('status')['textContent']='Đang\x20chuyển\x20hướng...',setTimeout(()=>{const _0x41b18e=_0x3c4bc7;_0xa3a56f(_0x41b18e(0x18a));},0xbb8)):(_0x3a0f35('Xác\x20minh\x20thất\x20bại.\x20Còn\x20lại\x20'+(_0x570831[_0x3c4bc7(0x159)]-_0x36e89c[_0x3c4bc7(0x182)])+'\x20lần\x20thử.'),_0x19d09b());}function _0x3a0f35(_0x51b023){const _0x293077=_0x27927f,_0x1ca05f=document[_0x293077(0x16d)](_0x293077(0x176)),_0x3064ce=document[_0x293077(0x16d)](_0x293077(0x19b));_0x3064ce['textContent']=_0x51b023,_0x1ca05f[_0x293077(0x19e)][_0x293077(0x147)]='block',setTimeout(()=>{const _0x486ab9=_0x293077;_0x1ca05f[_0x486ab9(0x19e)][_0x486ab9(0x147)]=_0x486ab9(0x146);},0x1388);}function _0x19d09b(){const _0x3c8d1d=_0x27927f;console['log']('🔄\x20Resetting\x20captcha'),document['getElementById'](_0x3c8d1d(0x161))[_0x3c8d1d(0x19f)][_0x3c8d1d(0x157)](_0x3c8d1d(0x14b)),document[_0x3c8d1d(0x16d)](_0x3c8d1d(0x166))['textContent']=_0x3c8d1d(0x17a);if(window['hcaptcha'])try{window[_0x3c8d1d(0x163)]['reset']();}catch(_0x12ef09){console[_0x3c8d1d(0x181)](_0x3c8d1d(0x179),_0x12ef09),setTimeout(()=>{const _0x5c517d=_0x3c8d1d;window[_0x5c517d(0x190)][_0x5c517d(0x16b)]();},0x3e8);}_0x36e89c[_0x3c8d1d(0x17f)]=null,_0x36e89c[_0x3c8d1d(0x172)]=![];}function _0xa3a56f(_0x512247){const _0x14d239=_0x27927f;if(_0x36e89c['redirecting'])return;_0x36e89c[_0x14d239(0x14c)]=!![],console[_0x14d239(0x181)]('🚫\x20Redirecting\x20to\x20blocked\x20page,\x20reason:',_0x512247),window[_0x14d239(0x190)]['href']=_0x14d239(0x14f)+_0x512247;}function _0x318bf9(){const _0x51aa0a=_0x27927f;console[_0x51aa0a(0x181)](_0x51aa0a(0x1b2));if(navigator[_0x51aa0a(0x149)]){console[_0x51aa0a(0x181)](_0x51aa0a(0x1a6)),_0xa3a56f(_0x51aa0a(0x18a));return;}if(typeof window[_0x51aa0a(0x163)]===_0x51aa0a(0x191)){console['log']('⏳\x20Waiting\x20for\x20hCaptcha\x20to\x20load...');let _0x548583=0x0;const _0x1c3aae=setInterval(()=>{const _0x39ea0a=_0x51aa0a;_0x548583++;if(typeof window['hcaptcha']!==_0x39ea0a(0x191))clearInterval(_0x1c3aae),console[_0x39ea0a(0x181)](_0x39ea0a(0x184));else _0x548583>0x32&&(clearInterval(_0x1c3aae),console[_0x39ea0a(0x154)](_0x39ea0a(0x180)),_0x3a0f35(_0x39ea0a(0x14e)));},0x64);}}document[_0x27927f(0x1ae)]===_0x27927f(0x164)?document[_0x27927f(0x1a5)](_0x27927f(0x150),_0x318bf9):_0x318bf9(),setTimeout(()=>{const _0x4477ab=_0x27927f;!_0x36e89c[_0x4477ab(0x172)]&&!_0x36e89c[_0x4477ab(0x14c)]&&(console['log'](_0x4477ab(0x19c)),_0x36e89c[_0x4477ab(0x182)]===0x0&&_0x3a0f35('Vui\x20lòng\x20hoàn\x20thành\x20captcha\x20để\x20tiếp\x20tục.'));},0x2710);}()));function _0xffef(){const _0x3eaeec=['no_dom','14330850DmlMZz','remove','push','MAX_ATTEMPTS','🔍\x20Performing\x20client-side\x20validation...','return','no_languages','P1_','🔙\x20Return\x20URL:','true','❌\x20Invalid\x20token\x20format','captchaContainer','❌\x20Captcha\x20error:','hcaptcha','loading','Quá\x20nhiều\x20lần\x20thử\x20thất\x20bại','status','toString','get','length','chrome','reload','add','getElementById','href','✅\x20Captcha\x20completed\x20successfully','searchParams','delete','verified','Hoàn\x20tất!\x20Đang\x20quay\x20lại\x20trang\x20chính...','mainIcon','headless','errorMessage','webstore','700376QoRWbC','Could\x20not\x20reset\x20captcha:','Vui\x20lòng\x20hoàn\x20thành\x20captcha\x20để\x20tiếp\x20tục','10rSlGZq','startsWith','initial_check','92586PTWeSu','token','❌\x20hCaptcha\x20failed\x20to\x20load','log','attempts','❌\x20Verification\x20failed:','✅\x20hCaptcha\x20loaded\x20successfully','includes','18SEgVAA','now','✅\x20Xác\x20minh\x20thành\x20công!','plugins','bot','9353547sZDKSg','🚀\x20Redirecting\x20to:','toLowerCase','🎯\x20Token\x20received:','📋\x20Check\x20reason:','location','undefined','P0_','Captcha\x20đã\x20hết\x20hạn.\x20Vui\x20lòng\x20thử\x20lại.','userAgent','onCaptchaExpired','Flags:','block','⏰\x20Captcha\x20expired','10793960SRIFtR','referrer','errorText','⏰\x2010\x20second\x20timeout\x20-\x20checking\x20status','score','style','classList','2810751hDDgsy','Đang\x20xác\x20minh...','✅\x20Client-side\x20validation\x20passed','substring','❌\x20Browser\x20checks\x20failed,\x20score:','addEventListener','❌\x20WebDriver\x20detected\x20-\x20immediate\x20redirect','967556EFPWcT','reason','🛡️\x20hCaptcha\x20verification\x20started\x20(Client-side\x20only)','3640844c-e606-4b7e-93ec-078232d4047a','createElement','selenium','verify_time','readyState','textContent','title','browser_check_failed','🛡️\x20hCaptcha\x20security\x20check\x20initialized\x20(Client-side)','setItem','languages','...','2ngOwXA','checkmark','none','display','invalid_format','webdriver','search','hidden','redirecting','errorIcon','Không\x20thể\x20tải\x20captcha.\x20Vui\x20lòng\x20refresh\x20trang.','blocked.html?reason=','DOMContentLoaded','subtitle','security_verified','no_plugins','error'];_0xffef=function(){return _0x3eaeec;};return _0xffef();}
-    </script>
+    function startSite() {
+      intro.style.display = "none";
+      main.style.display = "block";
+      video.muted = false;
+      video.play();
+    }
+
+    // Chặn F12, Ctrl+Shift+I, Ctrl+U
+    document.addEventListener("keydown", function(e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+        (e.ctrlKey && e.key.toLowerCase() === "u")
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    video.addEventListener('ended', () => video.play());
+  </script>
 </body>
 </html>
 
