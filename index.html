@@ -2,93 +2,153 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>LTQ | Dev Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ĐCM, Đây Bio T</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      height: 100%;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Segoe UI', sans-serif;
       color: white;
+      background: black;
+      overflow: hidden;
     }
-
-    video#bg {
+    video {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
       object-fit: cover;
+      width: 100%;
+      height: 100%;
       z-index: -1;
     }
-
     .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      margin-top: 80px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 15px auto;
     }
 
     .avatar-border {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      padding: 6px;
-      background: conic-gradient(red, orange, yellow, green, cyan, blue, violet, red);
-      animation: spin 3s linear infinite;
+      padding: 4px;
+      background: conic-gradient(
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        violet,
+        red
+      );
+      animation: spin 4s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
 
     .avatar {
-      width: 100%;
-      height: 100%;
+      width: 122px;
+      height: 122px;
       border-radius: 50%;
-      display: block;
+      object-fit: cover;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      z-index: 2;
+      border: 2px solid white;
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
-    .rainbow-text {
-      font-size: 22px;
+    h1 {
+      font-size: 28px;
       font-weight: bold;
-      margin-top: 20px;
-      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-      background-size: 400% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowMove 5s linear infinite;
+      margin-bottom: 10px;
     }
-
-    @keyframes rainbowMove {
-      0% { background-position: 0% center; }
-      100% { background-position: 400% center; }
+    .link {
+      margin: 8px 0;
+      font-size: 18px;
     }
-
-    a {
+    .link a {
+      color: #00ffff;
       text-decoration: none;
+    }
+    .music {
+      margin-top: 15px;
+      font-style: italic;
+      color: #ccc;
     }
   </style>
 </head>
-<body>
-  <video id="bg" autoplay loop muted playsinline>
-    <source src="video.mp4" type="video/mp4" />
-  </video>
+<body oncontextmenu="return false">
 
-  <audio autoplay loop>
-    <source src="video.mp4" type="video/mp4">
-  </audio>
+  <video id="bg-video" src="video.mp4" preload="auto" muted></video>
 
-  <div class="container">
-    <div class="avatar-border">
-      <img class="avatar" src="avatar.jpg" alt="avatar" />
+  <div class="container" onclick="enableSound()">
+    <div class="avatar-wrapper">
+      <div class="avatar-border"></div>
+      <img src="avatar.jpg" alt="Avatar" class="avatar" />
     </div>
-
-    <div class="rainbow-text"><a href="https://facebook.com">🌐 Facebook</a></div>
-    <div class="rainbow-text"><a href="https://youtube.com">📺 YouTube</a></div>
-    <div class="rainbow-text">💬 Discord: 1363444260271161395</div>
-    <div class="rainbow-text">🎵 Nhấn vô đây để mở nhạc</div>
+    <h1>LTQ | Dev Python ~ </h1>
+    <div class="link"><a href="https://www.facebook.com/quanglonto" target="_blank">🌐 Facebook</a></div>
+    <div class="link"><a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺 YouTube</a></div>
+    <div class="link">💬 Discord: <b>1363444260271161395</b></div>
+    <div class="music">🎵 Nhấn vô đây để mở nhạc</div>
   </div>
+
+  <script>
+    const video = document.getElementById("bg-video");
+
+    function enableSound() {
+      video.muted = false;
+      video.play();
+    }
+
+    // Chặn F12, Ctrl+Shift+I, Ctrl+U
+    document.addEventListener("keydown", function(e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+        (e.ctrlKey && e.key.toLowerCase() === "u")
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    // Ngăn chuột phải
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // Tự động phát lại video
+    video.addEventListener('ended', () => video.play());
+  </script>
 </body>
 </html>
+
+
