@@ -1,125 +1,302 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LTQ Bio</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  color: white;
-}
-video.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-.card-wrapper {
-  position: relative;
-  border-radius: 25px;
-  padding: 5px;
-  background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
-}
-.card {
-  background: rgba(0,0,0,0.6);
-  border-radius: 20px;
-  padding: 30px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  width: 300px;
-}
-.avatar-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 15px;
-}
-.avatar-border {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  padding: 3px;
-  background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
-  animation: spin 5s linear infinite;
-}
-.avatar {
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-h1 {
-  font-size: 26px;
-  font-weight: bold;
-}
-.links {
-  margin: 10px 0;
-}
-.links a {
-  font-size: 24px;
-  margin: 0 5px;
-  color: white;
-  text-decoration: none;
-}
-.update {
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 14px;
-  background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbowText 6s linear infinite;
-}
-.music {
-  margin-top: 5px;
-  font-style: italic;
-  color: #ccc;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-@keyframes rainbowText {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-</style>
-</head>
-<body>
-  <video autoplay muted loop class="bg-video">
-    <source src="video.mp4" type="video/mp4">
-  </video>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bio LTQ</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Segoe UI',sans-serif;
+      background:#000;
+      color:#fff;
+      overflow:hidden;
+      user-select:none;
+      -webkit-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none
+    }
+    video{
+      position:fixed;
+      top:0;
+      left:0;
+      object-fit:cover;
+      width:100%;
+      height:100%;
+      z-index:-1
+    }
 
-  <div class="card-wrapper">
-    <div class="card">
+    /* Khung bao ngoài có viền cầu vồng */
+    .container-wrapper {
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      border-radius: 24px;
+      padding: 4px;
+      background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
+      background-size: 400% 400%;
+      animation: gradientMove 8s ease infinite;
+      display: none;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container{
+      text-align:center;
+      background:rgba(0,0,0,.6);
+      padding:30px;
+      border-radius:20px;
+      backdrop-filter:blur(10px);
+    }
+
+    .avatar-wrapper{
+      position:relative;
+      width:130px;
+      height:130px;
+      margin:0 auto 15px auto
+    }
+    .avatar-border{
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      padding:4px;
+      background:conic-gradient(red,orange,yellow,lime,cyan,blue,violet,red);
+      animation:spin 4s linear infinite;
+      position:absolute;
+      top:0;
+      left:0;
+      z-index:1
+    }
+    .avatar{
+      width:122px;
+      height:122px;
+      border-radius:50%;
+      object-fit:cover;
+      position:absolute;
+      top:4px;
+      left:4px;
+      z-index:2;
+      border:2px solid #fff
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    h1{font-size:28px;font-weight:700;margin-bottom:10px}
+    .link{margin:8px 0;font-size:18px}
+    .link a{color:#0ff;text-decoration:none}
+    .music{margin-top:15px;font-style:italic;color:#ccc}
+
+    /* Màn hình 403 */
+    .forbidden{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:#f44336;
+      display:none;
+      justify-content:center;
+      align-items:center;
+      color:#333;
+      z-index:999
+    }
+    .forbidden-box{
+      background:#fff;
+      border-radius:16px;
+      padding:30px;
+      max-width:400px;
+      text-align:center;
+      box-shadow:0 4px 20px rgba(0,0,0,.3)
+    }
+    .forbidden-box h1{font-size:56px;margin:0 0 6px;color:#d32f2f}
+    .forbidden-box h2{font-size:20px;margin:0 0 10px}
+    .forbidden-box p{font-size:14px;margin:0 0 8px;color:#444}
+    .status{
+      display:flex;
+      justify-content:space-between;
+      background:#f7f7f7;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:14px;
+      margin-top:10px
+    }
+    .ddos{
+      background:#e6f7f4;
+      color:#0a8578;
+      padding:8px;
+      border-radius:6px;
+      margin-top:12px;
+      font-size:14px
+    }
+    .buttons{
+      margin-top:14px;
+      display:flex;
+      justify-content:center;
+      gap:10px
+    }
+    .btn{
+      padding:8px 16px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:600
+    }
+    .btn-red{background:#f44336;color:#fff}
+    .btn-gray{background:#f0f0f0;color:#333}
+    .notice{
+      font-size:12px;
+      margin-top:12px;
+      color:#888;
+      line-height:1.4
+    }
+  </style>
+</head>
+<body oncontextmenu="return false">
+  <video id="bg-video" src="video.mp4" preload="auto" autoplay muted loop></video>
+
+  <div class="container-wrapper" id="mainWrapper">
+    <div class="container" id="mainContent">
       <div class="avatar-wrapper">
-        <div class="avatar-border">
-          <img src="avatar.jpg" alt="Avatar" class="avatar">
-        </div>
+        <div class="avatar-border"></div>
+        <img src="avatar.jpg" alt="Avatar" class="avatar" />
       </div>
       <h1>LTQ</h1>
-      <div class="links">
-        <a href="https://www.facebook.com/quanglonto" target="_blank">🌐</a>
-        <a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺</a>
-      </div>
-      <div class="update">NEXT UPDATE: LTQGPT-AI NO TOXIC ME</div>
+      <div class="link"><a href="https://www.facebook.com/quanglonto" target="_blank">🌐</a></div>
+      <div class="link"><a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺</a></div>
+      <div class="link"> NEXT UPDATE: <b>LTQGPT-AI NO TOXIC ME</b></div>
       <div class="music">Nhạc sẽ đổi theo tâm trạng @LTQ</div>
     </div>
   </div>
+
+  <div id="forbiddenScreen" class="forbidden">
+    <div class="forbidden-box">
+      <h1>403</h1>
+      <h2>Truy cập bị cấm</h2>
+      <p>YOU ARE USING VPN-PROXY- ONLY AVAILABLE AT VIETNAM IP</p>
+      <div class="status">
+        <span><b>Trạng thái:</b> Hạn chế</span>
+        <span><b>Thời gian:</b> <span id="timeNow"></span></span>
+      </div>
+      <div class="ddos">🔒</div>
+      <div class="buttons">
+        <button class="btn btn-red" onclick="location.reload()">Thử lại</button>
+        <button class="btn btn-gray" onclick="history.back()">Trở lại</button>
+      </div>
+      <div class="notice">
+        Thông báo bảo mật<br>
+        Hệ thống của chúng tôi liên tục theo dõi các hoạt động đáng ngờ để bảo vệ mọi người dùng.<br>
+        <span id="incident"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BAN_KEY = "banUntil";
+
+    function t() {
+      const n = new Date();
+      const h = String(n.getHours()).padStart(2, "0");
+      const m = String(n.getMinutes()).padStart(2, "0");
+      const s = String(n.getSeconds()).padStart(2, "0");
+      document.getElementById("timeNow").textContent = `${h}:${m}:${s}`;
+    }
+
+    function i() {
+      const a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let r = "";
+      for (let k = 0; k < 8; k++) r += a.charAt(Math.floor(Math.random() * a.length));
+      return r;
+    }
+
+    function show403(reason = "Bị chặn") {
+      const now = Date.now();
+      const banUntil = localStorage.getItem(BAN_KEY);
+      if (!banUntil || now > parseInt(banUntil)) {
+        const banExpire = now + 5 * 60 * 1000;
+        localStorage.setItem(BAN_KEY, banExpire);
+      }
+      document.getElementById("forbiddenScreen").style.display = "flex";
+      t();
+      document.getElementById("incident").textContent =
+        `${new Date().toLocaleDateString()} • ${new Date().toLocaleTimeString()} | Incident ID: ENYMKC${i()} (${reason})`;
+      setInterval(t, 1000);
+    }
+
+    function showMain() {
+      document.getElementById("mainWrapper").style.display = "inline-block";
+      const v = document.getElementById("bg-video");
+      v.muted = false;
+      v.play().catch(() => {});
+    }
+
+    function timeoutFetch(u, o = {}) {
+      const c = new AbortController();
+      const id = setTimeout(() => c.abort(), o.timeout || 6000);
+      return fetch(u, { ...o, signal: c.signal }).finally(() => clearTimeout(id));
+    }
+
+    async function checkAccess() {
+      try {
+        const banUntil = parseInt(localStorage.getItem(BAN_KEY) || "0");
+        if (Date.now() < banUntil) {
+          show403("Đang trong thời gian bị ban");
+          return;
+        }
+
+        const r = await timeoutFetch("https://ipwho.is/?lang=en", { timeout: 6000 });
+        if (!r.ok) {
+          show403("404 / Request blocked");
+          return;
+        }
+        const d = await r.json();
+        const isVN = (d && d.country_code === "VN");
+        const sec = d && d.security ? d.security : {};
+        const isBad = Boolean(sec.vpn || sec.proxy || sec.tor || sec.anonymous || sec.hosting);
+
+        if (isVN && !isBad) {
+          showMain();
+          return;
+        }
+
+        const r2 = await timeoutFetch("https://ipapi.co/json/", { timeout: 5000 });
+        if (!r2.ok) {
+          show403("404 / Secondary check blocked");
+          return;
+        }
+        const d2 = await r2.json();
+        const isVN2 = (d2 && d2.country_code === "VN");
+
+        if (isVN2 && !isBad) {
+          showMain();
+          return;
+        }
+
+        show403("VPN / Proxy detected");
+      } catch (e) {
+        show403("Lỗi kết nối");
+      }
+    }
+
+    checkAccess();
+
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+        (e.ctrlKey && e.key.toLowerCase() === "u") ||
+        (e.ctrlKey && e.key.toLowerCase() === "s")
+      ) {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("selectstart", e => e.preventDefault());
+
+    const video = document.getElementById("bg-video");
+    video.addEventListener("ended", () => video.play());
+  </script>
 </body>
 </html>
