@@ -11,12 +11,23 @@
   box-sizing: border-box;
 }
 body {
-  background: url('bg.jpg') center/cover no-repeat;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+video.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 .card-wrapper {
   position: relative;
@@ -29,7 +40,6 @@ body {
   border-radius: 20px;
   padding: 30px;
   text-align: center;
-  color: white;
   backdrop-filter: blur(10px);
   width: 300px;
 }
@@ -69,6 +79,12 @@ h1 {
 .update {
   margin-top: 10px;
   font-weight: bold;
+  font-size: 14px;
+  background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, violet, red);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowText 6s linear infinite;
 }
 .music {
   margin-top: 5px;
@@ -78,9 +94,17 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+@keyframes rainbowText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
 </style>
 </head>
 <body>
+  <video autoplay muted loop class="bg-video">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
   <div class="card-wrapper">
     <div class="card">
       <div class="avatar-wrapper">
@@ -93,7 +117,7 @@ h1 {
         <a href="https://www.facebook.com/quanglonto" target="_blank">🌐</a>
         <a href="https://www.youtube.com/@LTQ-tool" target="_blank">📺</a>
       </div>
-      <div class="update">NEXT UPDATE: <span style="color: cyan;">LTQGPT-AI NO TOXIC ME</span></div>
+      <div class="update">NEXT UPDATE: LTQGPT-AI NO TOXIC ME</div>
       <div class="music">Nhạc sẽ đổi theo tâm trạng @LTQ</div>
     </div>
   </div>
